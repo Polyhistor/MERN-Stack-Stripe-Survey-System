@@ -1,37 +1,29 @@
 // library calls
 const express = require("express");
+const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const keys = require("./config/keys");
+require("./models/User");
+require("./services/passport");
+
+mongoose.connect(keys.mongoURI);
 
 // create an app
 const app = express();
 
-// passport handles pretty much most of the communication with the provider
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback"
-    },
-    (accessToken, refreshToken, profile, done) => {
-      console.log("accessToken: ", accessToken);
-      console.log("refreshToken: ", refreshToken);
-      console.log("profile: ", profile);
-    }
-  )
-);
-
-// router handler for the authentication
-app.get(
-  "/auth/google",
-  passport.authenticate("google", {
-    scope: ["profile", "email"]
+// using cookies
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
   })
 );
+// use our cookie hashing
+app.use(passport.initialize());
+app.use(passport.session());
 
-app.get("/auth/google/callback", passport.authenticate("google"));
+require("./routes/authRoutes")(app);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
