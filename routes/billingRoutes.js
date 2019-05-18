@@ -6,6 +6,7 @@ const requireLogin = require("../middlewares/requireLogin");
 
 module.exports = app => {
   // you can have a case-specific middleware by adding it as a second argument in your route handler
+  // the only requirement of epxress is that one function should return a response
   app.post("/api/stripe", requireLogin, async (req, res) => {
     // built-in method to handle charges
     const charge = await stripe.charges.create({
@@ -18,8 +19,8 @@ module.exports = app => {
     // accessing the user by PassportJS
     req.user.credits += 5;
     // persisting the new data
-    const updatedUser = await req.user.save();
+    const user = await req.user.save();
     // now let's send the response
-    res.send(updatedUser);
+    res.send(user);
   });
 };
