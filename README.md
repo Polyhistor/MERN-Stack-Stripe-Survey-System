@@ -27,3 +27,5 @@ Libraries Used for this project:
 ## Caution: 
 
 As there are two servers, and nodemon automatically restarts on every cange, your client server will be restarted too! I've tried ignoreing the folder, but I haven't been successful yet. So if it takes sometimes for your API requests to finalize, it's just normal.
+
+If you had any trouble, email me at pouya.ataei.7@gmail.com
