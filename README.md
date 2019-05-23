@@ -14,16 +14,16 @@ Which runs both your client server, nodemon, and also the localtunnel. We've use
 
 Libraries Used for this project: 
 
-## Passport JS
-## Axios
-## React-Redux
-## React-Router-Dom
-## SendGrid
-## Stripe
-## Localtunnel
-## Nodemon
-## Lodash
+# Passport JS
+# Axios
+# React-Redux
+# React-Router-Dom
+# SendGrid
+# Stripe
+# Localtunnel
+# Nodemon
+# Lodash
 
-#Caution: 
+## Caution: 
 
 As there are two servers, and nodemon automatically restarts on every cange, your client server will be restarted too! I've tried ignoreing the folder, but I haven't been successful yet. So if it takes sometimes for your API requests to finalize, it's just normal.
