@@ -14,15 +14,15 @@ Which runs both your client server, nodemon, and also the localtunnel. We've use
 
 Libraries Used for this project: 
 
-# Passport JS
-# Axios
-# React-Redux
-# React-Router-Dom
-# SendGrid
-# Stripe
-# Localtunnel
-# Nodemon
-# Lodash
+-Passport JS
+-Axios
+-React-Redux
+-React-Router-Dom
+-SendGrid
+-Stripe
+-Localtunnel
+-Nodemon
+-Lodash
 
 ## Caution: 
 
